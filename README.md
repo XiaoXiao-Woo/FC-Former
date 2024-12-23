@@ -47,7 +47,7 @@ The script will call ``python_scripts/accelerate_pansharpening.py`` to run the F
 
 
 ## Inference 
-Inference FC-Former to obtain final results, you can only update `model.yaml` as follows:
+Inference the FC-Former to obtain final results, you only need to update the `model.yaml` as follows:
 ```yaml
   eval : true # change false to true
   workflow:

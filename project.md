@@ -6,6 +6,8 @@
      &nbsp
      <a href="https://scholar.google.com/citations?user=pv61p_EAAAAJ&hl=en", style="font-size: 18px;">Zihan Cao</a>
      &nbsp
+     <a href="https://liangjiandeng.github.io/", style="font-size: 18px;"> Ting-Zhu Huang </a>
+     &nbsp
      <a href="https://liangjiandeng.github.io/", style="font-size: 18px;"> Liang-Jian Deng </a>
      &nbsp
      <a href="https://liangjiandeng.github.io/", style="font-size: 18px;"> Jocelyn Chanussot</a>
