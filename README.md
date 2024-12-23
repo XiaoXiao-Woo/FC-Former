@@ -22,11 +22,19 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
 
 ## Quick Start 🤗
 1. Install base training/inference repo with multiple Pytorch framework support. You can select one of backends: accelerate, lightning, transformers, and mmcv1.
-```pip install udl_vis --upgrade```
+```
+pip install udl_vis --upgrade
+```
 2. Install the [Task] repo by populating one of the following repos: ``pancollection``, ``mhif`` ``msif``.
-``` pip install [Task] ```
+
+``` 
+pip install [Task] --upgrade
+```
+
 3. Then in this repository:
-```pip install -e .```
+```
+pip install -e .
+```
 
 
 
