@@ -13,7 +13,7 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
   * Visible and infrared image fusion (VIS-IR); 
   * Digital photographic image fusion: Multi-focus image fusion (MFF) and multi-exposure image fusion (MEF). 
 
-* 🎁 We will release a new version of [UDL](), [PanCollection](). Furthermore, we also release repositories of [HypersSectralCollection]() and [MSIF]().
+* 🎁 We will release a new version of [UDL](), [PanCollection](). Furthermore, we also release repositories of [HyperSpectralCollection]() and [MSIF]().
 
 * :eight_pointed_black_star: **The FC-Former employs multilinear algebra to unify and generalize self-attention mechanisms.** One of the generalized self-attention mechanisms is fully-connected self-attention (FCSA).
 
