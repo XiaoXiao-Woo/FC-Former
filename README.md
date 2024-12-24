@@ -22,7 +22,7 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
 
 
 ## Quick Start 🤗
-1. Install base training/inference repo with multiple Pytorch framework support. You can select one of backends: accelerate, lightning, transformers, and mmcv1.
+1. Install our basic training/inference repo with multiple Pytorch framework support. You can select one of backends: accelerate, lightning, transformers, and mmcv1.
 ```
 pip install udl_vis --upgrade
 ```
