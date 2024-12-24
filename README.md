@@ -13,7 +13,7 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
   * Visible and infrared image fusion (VIS-IR); 
   * Digital photographic image fusion: Multi-focus image fusion (MFF) and multi-exposure image fusion (MEF). 
 
-* 🎁 We will release a new version of [UDL](), [PanCollection](). Furthermore, we also release repositories of [HyperSpectralCollection]() and [MSIF]().
+* 🎁 We will release a new version of [UDL](), [PanCollection](). Furthermore, we also release repositories of [HyperSpectralCollection, comming soon]() and [MSIF, comming soon]().
 
 * :eight_pointed_black_star: **The FC-Former employs multilinear algebra to unify and generalize self-attention mechanisms.** One of the generalized self-attention mechanisms is fully-connected self-attention (FCSA).
 
@@ -77,13 +77,13 @@ Finally, we provide the correspoinding Matlab toolboxes to test the metrics on t
 ## Experiments
 In this part, we conduct experiments in the following cases. All settings can be changed in `dataset.yaml`.
 * MHIF: CAVE and Harvard. 
-  * See our repo [MHIF]() for more details;
+  * See our repo [MHIF, comming soon]() for more details;
 * VIS-IR image fusion: TNO and RoadScene datasets. 
-  * See our repo [MSIF]() for more details;
+  * See our repo [MSIF, comming soon]() for more details;
 * Pansharpening: WorldView-3, GaoFen-2, QuickBird datasets.
-  * See our repo [PanCollection]() for more details;
+  * See our repo [PanCollection, comming soon]() for more details;
 * Digital photographic image fusion: MFF-WHU, MEF-Lytro,MEF-SLICE, MEFB. 
-  * See our repo [MSIF]() for more details;
+  * See our repo [MSIF, comming soon]() for more details;
 
 
 
