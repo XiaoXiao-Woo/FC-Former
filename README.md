@@ -3,7 +3,7 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
 
 [[Paper]()] [[Project Page](project.md)] [[Data]()] [[Model Zoo]()]
 
-[[UDL]()] [[PanCollection]()] [[HypersSpectralCollection]()] [[MSIF]()] 
+[[UDL]()] [[PanCollection]()] [[HyperSpectralCollection]()] [[MSIF]()] 
 
 ## News🔥🔥🔥
 
