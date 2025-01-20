@@ -137,6 +137,38 @@ year={2023}
 }
 ```
 
+And some related works about image fusion may attract you:
+
+```bibtex
+@inproceedings{
+    cao2024novel,
+    title={A novel state space model with local enhancement and state sharing for image fusion},
+    author={Cao, Zihan and Wu, Xiao and Deng, Liang-Jian and Zhong, Yu},
+    booktitle={ACM Multimedia 2024 (ACM MM)},
+    year={2024}
+}
+```
+
+```bibtex
+@article{cao2024neural,
+  title={Neural Shr$\backslash$" odinger Bridge Matching for Pansharpening},
+  author={Cao, Zihan and Wu, Xiao and Deng, Liang-Jian},
+  journal={arXiv preprint arXiv:2404.11416},
+  year={2024}
+}
+```
+
+```bibtex
+@article{cao2024diffusion,
+  title={Diffusion model with disentangled modulations for sharpening multispectral and hyperspectral images},
+  author={Cao, Zihan and Cao, Shiqi and Deng, Liang-Jian and Wu, Xiao and Hou, Junming and Vivone, Gemine},
+  journal={Information Fusion},
+  volume={104},
+  pages={102158},
+  year={2024},
+  publisher={Elsevier}
+}
+```
 
 ## License
 This project is open sourced under GNU General Public License v3.0.
