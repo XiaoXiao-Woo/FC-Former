@@ -6,7 +6,7 @@ This repo is the official code of Fully-connected Transformer for Multi-source  
 [[UDL](https://github.com/XiaoXiao-Woo/UDL)] [[PanCollection](https://github.com/XiaoXiao-Woo/PanCollection)] [[HyperSpectralCollection]()] [[MSIF]()] 
 
 ## News🔥🔥🔥
-
+* ***We will release the complete code within one month after the ICCV deadline.***
 * :art: The FC-Former convers multiple multi-source image fusion scenes:
   * Multispectral and hyperspectral image fusion;
   * Remote sensing pansharpening;
