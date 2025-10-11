@@ -91,7 +91,7 @@ In this part, we conduct experiments in the following cases. All settings can be
 ## Citation
 Please cite this project if you use datasets or the toolbox in your research.
 ```bibtex
-@article{FCForrmer,
+@article{FCFormer,
   title={Fully-connected Transformer for Multi-source  Image Fusion},
   author={Xiao Wu, Zi-Han Cao, Ting-Zhu Huang, Liang-Jian Deng, Jocelyn Chanussot, and Gemine Vivone}
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
