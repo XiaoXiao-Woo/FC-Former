@@ -1,0 +1,138 @@
+# FC-Former, pansharpening on WorldView-3, run through PanCollection (udl_vis trainer).
+# Paths are relative to the directory the command is started from (the repository root):
+# put the PanCollection h5 files under data/ and the weights under weights/, or override the paths.
+#
+# Test with the released weights (full-resolution test set by default):
+#   naive_pansharpening --config-path=$PWD/configs --config-name=fcformer_wv3 eval=true
+# Reduced-resolution test:
+#   ... "dataset.wv3_test_path=[\${data_root}/test_data/test_wv3_multiExm1.h5]" base.test.test=reduce
+
+hydra:
+  run:
+    dir: ${hydra:runtime.cwd}/results/${base.task}/${dataset.test_name}/${experimental_desc}
+  job:
+    env_set:
+      OMP_NUM_THREADS: 1
+
+experimental_desc: fcformer_wv3
+model_type: FCFormer
+# udl_vis imports the fcformer package before building the model, which registers FCFormer
+# (needs no FCFormer entry in the task repo). Run from the repository root.
+import_path: ["${hydra:runtime.cwd}", fcformer]
+eval: false          # true: test only
+direction: maximize
+seed: 1
+gpu_ids: 0           # single process; multi-GPU runs take their devices from accelerate
+resume_from: ""
+
+max_epochs: 1100
+samples_per_gpu: 8
+workers_per_gpu: 0
+patch_size_list: {lms: 64, ms: 16, pan: 64, x_net: 64}
+workflow:
+  - [train, 1]
+  - [valid, 10]
+  - [test, 50]
+log_epoch_interval: 1
+train_log_iter_interval: 50
+val_log_iter_interval: 10
+test_log_iter_interval: 1
+save_interval: 10
+
+optimizer_cfg:
+  optimizer_type: AdamW
+  betas: [0.9, 0.999]
+  weight_decay: 1.0e-6
+  lr: 1.0e-4
+
+data_root: ${hydra:runtime.cwd}/data   # PanCollection h5 files: training_data/, test_data/
+
+dataset:
+  dataset_cfg: {train: {}, val: {}, test: {}}
+  train_name: wv3
+  val_name: wv3
+  test_name: wv3
+  wv3_train_path: ${data_root}/training_data/train_wv3_9714.h5
+  wv3_val_path: [ "${data_root}/test_data/test_wv3_multiExm1.h5" ]
+  wv3_test_path: [ "${data_root}/test_data/test_wv3_OrigScale_multiExm1.h5" ]
+
+# Network (fcformer.tasks.pansharpening.build_FCFormer) and weights.
+args:
+  dataset_type: PanCollection
+  model_path: ""
+  use_resume: true
+  added_c: 1                                 # PAN channels
+  channel_list: [48, [48, 96], [48, 96, 192]]
+  num_heads: [8, [8, 8], [8, 8, 8]]
+  mlp_ratio: [2, [2, 2], [2, 2, 2]]
+  block_list: [1, [1, 1], [1, 1, 1]]
+  in_scale: [[[1, 2, 3, 5, 4], 5]]           # forms (i, k): CAL-SA in each branch
+  cross_scale: [[[1, 2, 3, 4, 5], 5]]        # Spa-SA across branches
+  align: null                                # bilinear: needed when a cross-scale form has J3 = S
+  attn_drop: 0.0
+  drop_path: 0.0
+  device: null                               # null: cuda if available, else cpu
+  pretrained: ${hydra:runtime.cwd}/weights/fcformer_wv3.pth
+
+search_space: {}
+
+# udl_vis runtime settings.
+base:
+  task: pansharpening
+  scale: [1]
+  metrics: {train: loss, val: PSNR, test: HQNR}
+  test: {test: full, val: reduce}            # full: full-resolution indexes; reduce: reference indexes
+  save_fmt: [mat]                            # one output_mulExm_<k>.mat per test image
+  img_range: 2047.0
+  img_scale: {wv3: 2047.0, gf2: 1023.0, qb: 2047.0, wv3_full: 2047.0}
+  test_samples_per_gpu: 1
+  merge_keys: [base, args]
+  backend: accelerate
+  launcher: pytorch
+  retry_count: 0
+  failed_trial_id: -1
+  n_jobs: 1
+  debug: false
+  accumulated_step: 1
+  grad_clip_norm: 1
+  grad_clip_value: null
+  find_unused_parameters: false
+  reg: true
+  crop_batch_size: 32
+  use_log: true
+  log_dir: logs
+  use_colorlog: true
+  tfb_dir: null
+  use_tfb: false
+  by_epoch: true
+  eval_flag: false
+  formatter: "model_{epoch}_{iter}"
+  validate: false
+  use_save: true
+  reset_lr: false
+  save_top_k: 5
+  save_latest_limit: 3
+  load_model_strict: true
+  load_optimizer_strict: true
+  use_post_train: false
+  resume_mode: latest
+  start_save_epoch: 1
+  earlyStopping: true
+  code_dir: []
+  start_save_best_epoch: 200
+  revise_keys: "[(r\"^module\\.\", \"\")]"
+  prefix_model: ""
+  fp16_cfg: {}
+  fp16: false
+  fp_scaler: false
+  mixed_precision: null
+  once_epoch: false
+  runner_mode: epoch
+  precision: 5
+  mode: null
+  detect_anomalous_params: false
+  ema_decay: 0.999
+  ema_warmup_steps: 0
+  use_ema: false
+  global_rank: 0
+  dist_params: {backend: nccl}
